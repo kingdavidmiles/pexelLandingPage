@@ -4,22 +4,23 @@
     <div class="bg-white" style="display: flex; justify-content: center">
       <nav class="flex flex-col sm:flex-row" style="">
         <button
+          @click="setActiveTab($event, 'Home')"
           class="
-            text-gray-600
             py-4
             px-6
             block
             hover:text-blue-500
             focus:outline-none
-            text-blue-500
-            border-b-2 border-blue-500
+            border-b-2
             font-bold
           "
+          :class="{
+            'text-blue-500 border-blue-500': isActive,
+          }"
         >
           Home</button
         ><button
           class="
-            text-gray-600
             py-4
             px-6
             block
@@ -31,7 +32,6 @@
           Discover</button
         ><button
           class="
-            text-gray-600
             py-4
             px-6
             block
@@ -43,7 +43,6 @@
           Videos</button
         ><button
           class="
-            text-gray-600
             py-4
             px-6
             block
@@ -56,7 +55,6 @@
         </button>
         <button
           class="
-            text-gray-600
             py-4
             px-6
             block
@@ -70,55 +68,50 @@
       </nav>
     </div>
     <!--  -->
-    <div class="md:px-2 md:mx-2 md:py-10 lg:px-10 lg:mx-20">
-      <div class="flex flex-wrap mx-2 overflow-hidden">
-        <div
-          class="
-            my-2
-            px-2
-            w-full
-            sm:w-full
-            md:w-1/3
-            lg:w-1/3
-            overflow-hidden
-            panel panel-default
-          "
-          v-for="(item, index) in items"
-          :key="index"
-        >
-          <div class="row">
-            <img :src="item.image" class="photo-item__img photos__column" />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Photos :query="query" />
   </div>
 </template>
 
 <script>
 import HomeLayout from '../layouts/default.vue'
+import Photos from '@/components/Photos.vue'
+
 export default {
   components: {
     HomeLayout,
+    Photos,
   },
 
   data() {
     return {
-      items: [
-        { image: '/image/one.jpeg' },
-        { image: '/image/two.jpeg' },
-        { image: '/image/three.jpeg' },
-        { image: '/image/four.jpeg' },
-        { image: '/image/one.jpeg' },
-        { image: '/image/five.jpeg' },
-        { image: '/image/six.jpeg' },
-        { image: '/image/seven.jpeg' },
-        { image: '/image/nine.jpeg' },
-        { image: '/image/eleven.jpeg' },
-        { image: '/image/nine.jpeg' },
-        { image: '/image/twelve.jpeg' },
+      items: [],
+      navItems: [
+        {
+          text: 'xxxxx',
+        },
       ],
+      activeClasse: 'text-blue-500 border-blue-500',
+      active: false,
+      query: 'Cars',
     }
+  },
+  computed: {
+    isActive: {
+      get() {
+        return this.active
+      },
+      set(val) {
+        this.active = val
+      },
+    },
+  },
+  methods: {
+    setActiveTab(e, text) {
+      // TODO
+      this.isActive = true
+      this.query = text
+      console.log(e.target.innerHTML, text)
+    },
   },
 }
 </script>
