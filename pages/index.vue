@@ -2,68 +2,27 @@
   <div>
     <NavBar />
     <div class="bg-white" style="display: flex; justify-content: center">
-      <nav class="flex flex-col sm:flex-row" style="">
+      <nav
+        class="flex flex-col sm:flex-row"
+        style=""
+        v-for="(tabButton, index) in tabButtons"
+        :key="index"
+      >
         <button
-          @click="setActiveTab($event, 'Home')"
+          @click="setActiveTab($event, tabButton.text)"
           class="
             py-4
             px-6
             block
             hover:text-blue-500
             focus:outline-none
-            border-b-2
             font-bold
           "
           :class="{
             'text-blue-500 border-blue-500': isActive,
           }"
         >
-          Home</button
-        ><button
-          class="
-            py-4
-            px-6
-            block
-            hover:text-blue-500
-            focus:outline-none
-            font-bold
-          "
-        >
-          Discover</button
-        ><button
-          class="
-            py-4
-            px-6
-            block
-            hover:text-blue-500
-            focus:outline-none
-            font-bold
-          "
-        >
-          Videos</button
-        ><button
-          class="
-            py-4
-            px-6
-            block
-            hover:text-blue-500
-            focus:outline-none
-            font-bold
-          "
-        >
-          Leaderboard
-        </button>
-        <button
-          class="
-            py-4
-            px-6
-            block
-            hover:text-blue-500
-            focus:outline-none
-            font-bold
-          "
-        >
-          Challenges
+          {{ tabButton.text }}
         </button>
       </nav>
     </div>
@@ -85,14 +44,17 @@ export default {
   data() {
     return {
       items: [],
-      navItems: [
-        {
-          text: 'xxxxx',
-        },
+      tabButtons: [
+        { text: 'Home' },
+        { text: 'Discover' },
+        { text: 'Video' },
+        { text: ' Leaderboard' },
+        { text: '  Challenges' },
       ],
+
       activeClasse: 'text-blue-500 border-blue-500',
       active: false,
-      query: 'Cars',
+      query: 'Home',
     }
   },
   computed: {
@@ -106,11 +68,11 @@ export default {
     },
   },
   methods: {
-    setActiveTab(e, text) {
+    setActiveTab(event, text) {
       // TODO
-      this.isActive = true
+      // this.isActive = event.target.innerText == text
       this.query = text
-      console.log(e.target.innerHTML, text)
+      console.log(event.target.classList.add('border-blue-500'))
     },
   },
 }

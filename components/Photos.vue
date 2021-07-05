@@ -1,34 +1,128 @@
 <template>
-  <section class="">
-    {{ query }}
-    <h1>hello world</h1>
-    <div class="container">
-      <div class="flex justify-items-center flex-wrap">
-        <div
-          v-for="(photosArr, i) of photos"
-          :key="i"
-          class="flex m-3 justify-self-center"
-        >
-          <div v-for="photo of photosArr" :key="photo.id">
-            <img class="m-3" :src="photo.src.medium" />
+  <div>
+    <div class="flex flex-wrap overflow-hidden">
+      <div class="w-20 overflow-hidden">
+        <!-- Column Content -->
+      </div>
+
+      <div class="w-11/12 overflow-hidden">
+        <section class="">
+          <!-- {{ query }} -->
+          <Display />
+          <!--  -->
+          <div class="container">
+            <div class="flex flex-wrap">
+              <div
+                v-for="(photosArr, i) of photos"
+                :key="i"
+                class="flex justify-self-center"
+              >
+                <div
+                  v-for="photo of photosArr"
+                  :key="photo.id"
+                  class="relative hover-trigger"
+                >
+                  <img class="px-2 m-3" :src="photo.src.large2x" />
+
+                  <div
+                    class="
+                      absolute
+                      bottom-0
+                      left-0
+                      h-22
+                      w-100
+                      px-8
+                      py-3
+                      hover-target
+                    "
+                  >
+                    <div class="flex flex-col">
+                      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full">
+                          <div class="overflow-hidden sm:rounded-lg">
+                            <table class="min-w-full">
+                              <tbody>
+                                <tr>
+                                  <td
+                                    class="
+                                      px-10
+                                      m-3
+                                      py-4
+                                      whitespace-nowrap
+                                      relative
+                                    "
+                                  >
+                                    <div class="flex items-center">
+                                      <!-- <div class="myDIV"> -->
+                                      <div class="flex-shrink-0 h-10 w-10">
+                                        <img
+                                          class="h-10 w-10 rounded-full"
+                                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div class="text-white">
+                                        <small> {{ photo.photographer }}</small>
+                                      </div>
+                                    </div>
+                                    <!-- </div> -->
+                                  </td>
+
+                                  <td
+                                    class="
+                                      px-2
+                                      py-4
+                                      whitespace-nowrap
+                                      text-right text-sm
+                                      font-medium
+                                    "
+                                    v-for="(item, index) in items"
+                                    :key="index"
+                                  >
+                                    <a
+                                      href="#"
+                                      class="text-white hover:text-indigo-900"
+                                      >{{ item.name }}</a
+                                    >
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
+      </div>
+
+      <div class="w-20 overflow-hidden">
+        <!-- Column Content -->
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
 import { createClient } from 'pexels'
+import Display from '../components/Display.vue'
 export default {
+  components: {
+    Display,
+  },
   props: {
     query: {
       type: String,
-      required: true,
+      // required: true,
     },
   },
   data() {
     return {
+      items: [{ name: 'edit' }, { name: 'edit' }, { name: 'edit' }],
       client: null,
       photos: [],
     }
@@ -58,7 +152,7 @@ export default {
     getPhotos() {
       this.client = createClient(process.env.PEXEL_API_KEY)
       this.client.photos
-        .search({ query: this.query, per_page: 11 })
+        .search({ query: this.query, per_page: 20 })
         .then((res) => {
           this.photos = this.groupBy(res.photos, 4)
         })
@@ -78,43 +172,20 @@ export default {
 </script>
 
 <style>
-.row-rie {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
+.hiddenText {
+  display: none;
+}
+.hoverDiv:hover + .hiddenText {
+  display: block;
+  color: rgb(71, 0, 65);
+  font-size: 22px;
+  font-weight: bold;
+}
+.hover-trigger .hover-target {
+  display: none;
 }
 
-/* Create four equal columns that sits next to each other */
-.column-rie {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.column-rie img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column-rie {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column-rie {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
+.hover-trigger:hover .hover-target {
+  display: block;
 }
 </style>

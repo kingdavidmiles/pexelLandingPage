@@ -10,7 +10,7 @@
       <div class="md:hidden">
         <button @click="drawer">
           <svg
-            class="h-8 w-8 fill-current text-white"
+            class="h-8 w-8 fill-current text-black"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -121,7 +121,7 @@
             <div class="my-3 w-4/5 overflow-hidden">
               <input
                 type="text"
-                id="password"
+                id="text"
                 class="
                   w-full
                   pl-3
