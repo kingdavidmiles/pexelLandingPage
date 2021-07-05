@@ -1,4 +1,7 @@
 export default {
+  generate: {
+    fallback: true,
+  },
   env: {
     PEXEL_BASE_URL: process.env.PEXEL_BASE_URL,
     PEXEL_API_KEY: process.env.PEXEL_API_KEY,
