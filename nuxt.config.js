@@ -7,7 +7,7 @@ export default {
     PEXEL_API_KEY: process.env.PEXEL_API_KEY,
   },
   // Target: https://go.nuxtjs.dev/config-target
-  // target: 'static',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
