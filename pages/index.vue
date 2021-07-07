@@ -2,6 +2,7 @@
   <div>
     <NavBar />
 
+    <!-- content listing on homepage -->
     <div class="flex justify-center shadow-md overflow-x-auto">
       <nav
         class="bg-white pt-2"
@@ -28,19 +29,19 @@
         </button>
       </nav>
     </div>
+    <!-- End here -->
     <br />
-    <!--  -->
+    <!-- photos  -->
     <Photos :query="query" />
+    <!--  -->
   </div>
 </template>
 
 <script>
-import HomeLayout from '../layouts/default.vue'
 import Photos from '@/components/Photos.vue'
 
 export default {
   components: {
-    HomeLayout,
     Photos,
   },
 
@@ -72,8 +73,6 @@ export default {
   },
   methods: {
     setActiveTab(event, text) {
-      // TODO
-      // this.isActive = event.target.innerText == text
       this.query = text
       console.log(event.target.classList.add('border-blue-500'))
     },
@@ -81,17 +80,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.panel {
-  height: 100%;
-}
-
-.photos__column {
-  display: block;
-  flex-basis: 0;
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  flex-shrink: 1;
-  margin-right: 1.45rem;
-}
-</style>
+<style scoped></style>

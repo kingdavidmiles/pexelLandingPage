@@ -1,18 +1,8 @@
 <template>
   <div>
-    <!-- <center> -->
     <div class="flex">
       <div class="md:w-1/5 w-3/5 m-3">
-        <div
-          class="
-            px-3
-            md:px-3 md:font-bold
-            lg:font-bold
-            md:text-xl
-            lg:text-xl
-            text-base
-          "
-        >
+        <div class="px-3 md:px-0 lg:font-bold md:text-md lg:text-lg text-base">
           Free Stock Photos
         </div>
       </div>
@@ -22,6 +12,7 @@
         class="w-1/5 md:w-1/5 lg:w-1/5 invisible md:visible lg:visible"
       ></div>
 
+      <!-- second col for Trending and hover to drop down -->
       <div class="md:w-1/5 lg:w-1/5 w-2/5 md:-mx-2">
         <nav
           aria-label="primary"
@@ -68,6 +59,7 @@
                 </svg>
               </span>
             </button>
+            <!-- items on hover -->
             <div class="absolute z-10 hidden bg-grey-200 group-hover:block">
               <div class="px-2 pt-2 pb-4 shadow-lg bg-white w-80">
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -83,12 +75,27 @@
         </nav>
       </div>
     </div>
-    <!-- </center> -->
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    studentUpdate: function () {
+      this.$http.get('/webapi/student').then(
+        (results) => {
+          console.log(results.data.data)
+          this.student = results.data.data
+        },
+        (results) => {
+          console.log('ERROR')
+          console.log(results)
+        }
+      )
+      setTimeout(this.studentUpdate, 5000)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>

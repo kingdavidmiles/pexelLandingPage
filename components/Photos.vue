@@ -50,8 +50,17 @@
                                       relative
                                     "
                                   >
-                                    <div class="flex items-center">
-                                      <!-- <div class="myDIV"> -->
+                                    <!--item displayed on image hover on md,lg and xl screen  -->
+                                    <div
+                                      class="
+                                        flex
+                                        items-center
+                                        invisible
+                                        md:visible
+                                        lg:visible
+                                        xl:visible
+                                      "
+                                    >
                                       <div class="flex-shrink-0 h-10 w-10">
                                         <img
                                           class="h-10 w-10 rounded-full"
@@ -59,11 +68,11 @@
                                           alt=""
                                         />
                                       </div>
-                                      <div class="text-white">
+                                      <div class="text-white m-1">
                                         <small> {{ photo.photographer }}</small>
                                       </div>
                                     </div>
-                                    <!-- </div> -->
+                                    <!-- End here -->
                                   </td>
 
                                   <td
@@ -105,7 +114,7 @@
 
 <script>
 import { createClient } from 'pexels'
-import Display from '../components/Display.vue'
+import Display from './TwoGridDisplay.vue'
 export default {
   components: {
     Display,
@@ -148,10 +157,11 @@ export default {
     getPhotos() {
       this.client = createClient(process.env.PEXEL_API_KEY)
       this.client.photos
-        .search({ query: this.query, per_page: 20 })
+        .search({ query: this.query, per_page: 200 })
         .then((res) => {
           this.photos = this.groupBy(res.photos, 3)
         })
+      setTimeout(this.getPhotos, 1000 * 60)
     },
   },
   mounted() {

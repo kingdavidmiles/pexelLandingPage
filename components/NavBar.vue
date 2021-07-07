@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between">
       <!-- Header logo -->
       <div>
-        <Tailwind />
+        <PexelLogo />
       </div>
 
       <!-- Mobile toggle -->
@@ -115,7 +115,7 @@
         <span @click="isOpen = false" class="flex w-full items-center p-4">
           <div class="flex flex-wrap overflow-hidden">
             <div class="my-3 w-1/5 overflow-hidden">
-              <Tailwind />
+              <PexelLogo />
             </div>
 
             <div class="my-3 w-4/5 overflow-hidden">
@@ -158,7 +158,7 @@
 
           <!--  -->
         </span>
-
+        <!-- list on sm, xs drawer -->
         <ul class="font-sans leading-relaxed">
           <li>
             <a
@@ -290,6 +290,7 @@
           </li>
         </ul>
         <hr class="py-3 mt-5" />
+        <!-- social icons -->
         <div class="follow">
           <div class="social flex space-x-5 mt-4">
             <a href="#">
@@ -464,7 +465,11 @@
 </template>
 
 <script>
+import PexelLogo from '../components/PexelLogo.vue'
 export default {
+  components: {
+    PexelLogo,
+  },
   data() {
     return {
       isOpen: false,
