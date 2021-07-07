@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="flex flex-wrap overflow-hidden">
-      <div class="w-20 overflow-hidden">
-        <!-- Column Content -->
-      </div>
+      <div class="w-16 overflow-hidden invisible md:visible lg:visible"></div>
 
       <div class="w-11/12 overflow-hidden">
         <section class="">
@@ -100,9 +98,7 @@
         </section>
       </div>
 
-      <div class="w-20 overflow-hidden">
-        <!-- Column Content -->
-      </div>
+      <div class="w-20 overflow-hidden invisible md:visible lg:visible"></div>
     </div>
   </div>
 </template>
@@ -154,7 +150,7 @@ export default {
       this.client.photos
         .search({ query: this.query, per_page: 20 })
         .then((res) => {
-          this.photos = this.groupBy(res.photos, 4)
+          this.photos = this.groupBy(res.photos, 3)
         })
     },
   },

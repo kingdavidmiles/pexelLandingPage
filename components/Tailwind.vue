@@ -22,8 +22,11 @@
         class="
           hide-when-mid-size-and-smaller
           main-nav-bar__logo__text
-          text-black
+          text-white
           mt-1
+          invisible
+          md:visible
+          lg:visible
         "
         href="/"
       >

@@ -1,9 +1,10 @@
 <template>
   <div>
     <NavBar />
-    <div class="bg-white" style="display: flex; justify-content: center">
+
+    <div class="flex justify-center shadow-md overflow-x-auto">
       <nav
-        class="flex flex-col sm:flex-row"
+        class="bg-white pt-2"
         style=""
         v-for="(tabButton, index) in tabButtons"
         :key="index"
@@ -17,6 +18,7 @@
             hover:text-blue-500
             focus:outline-none
             font-bold
+            text-gray-600
           "
           :class="{
             'text-blue-500 border-blue-500': isActive,
@@ -26,6 +28,7 @@
         </button>
       </nav>
     </div>
+    <br />
     <!--  -->
     <Photos :query="query" />
   </div>

@@ -2,20 +2,34 @@
   <div>
     <!-- <center> -->
     <div class="flex">
-      <div class="w-1/5 m-3 px-3 font-bold">Free Stock Photos</div>
-      <div class="w-1/5"></div>
-      <div class="w-1/5"></div>
-      <div class="w-1/5"></div>
+      <div class="md:w-1/5 w-3/5 m-3">
+        <div
+          class="
+            px-3
+            md:px-3 md:font-bold
+            lg:font-bold
+            md:text-xl
+            lg:text-xl
+            text-base
+          "
+        >
+          Free Stock Photos
+        </div>
+      </div>
+      <div class="md:w-1/5 lg:w-1/5 invisible md:visible lg:visible"></div>
+      <div class="md:w-1/5 lg:w-1/5 invisible md:visible lg:visible"></div>
+      <div
+        class="w-1/5 md:w-1/5 lg:w-1/5 invisible md:visible lg:visible"
+      ></div>
 
-      <div class="w-1/5 -mx-2">
+      <div class="md:w-1/5 lg:w-1/5 w-2/5 md:-mx-2">
         <nav
           aria-label="primary"
           class="
             relative
             z-20
             flex-col flex-grow
-            hidden
-            pb-4
+            pb-1
             md:pb-0 md:flex md:justify-end md:flex-row
           "
         >
@@ -25,15 +39,14 @@
                 outline-none
                 focus:outline-none
                 px-3
-                py-1
-                bg-white
+                py-3
                 rounded-sm
                 flex
                 items-center
                 min-w-32
               "
             >
-              <span class="flex-1">Tranding</span>
+              <span class="flex-1 font-bold">Tranding</span>
               <span>
                 <svg
                   class="
@@ -58,10 +71,10 @@
             <div class="absolute z-10 hidden bg-grey-200 group-hover:block">
               <div class="px-2 pt-2 pb-4 shadow-lg">
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <ul>
-                    <li>Hellortyuio</li>
-                    <li>Hellortyuio</li>
-                    <li>Hellortyuio</li>
+                  <ul class="w-100">
+                    <li>Trending</li>
+                    <li>New</li>
+                    <li>Following</li>
                   </ul>
                 </div>
               </div>
