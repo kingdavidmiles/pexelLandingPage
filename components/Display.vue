@@ -69,7 +69,7 @@
               </span>
             </button>
             <div class="absolute z-10 hidden bg-grey-200 group-hover:block">
-              <div class="px-2 pt-2 pb-4 shadow-lg">
+              <div class="px-2 pt-2 pb-4 shadow-lg bg-white w-80">
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <ul class="w-100">
                     <li>Trending</li>

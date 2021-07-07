@@ -10,7 +10,7 @@
       <div class="md:hidden">
         <button @click="drawer">
           <svg
-            class="h-8 w-8 fill-current text-black"
+            class="h-8 w-8 fill-current text-white"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"
