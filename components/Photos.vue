@@ -161,7 +161,7 @@ export default {
         .then((res) => {
           this.photos = this.groupBy(res.photos, 3)
         })
-      setTimeout(this.getPhotos, 1000 * 60)
+      setInterval(this.getPhotos, 1000 * 60)
     },
   },
   mounted() {
